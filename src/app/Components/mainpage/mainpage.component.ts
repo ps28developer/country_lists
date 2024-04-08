@@ -11,13 +11,12 @@ export class MainpageComponent implements OnInit {
   constructor(private coutryService: CountryService,private router:Router) {}
 
   ngOnInit(): void {}
-
   
 
   changeRole(e: any) {
     let value = e.target.value;
     this.coutryService.userRole.next(value);
     // localStorage.setItem("user_role",value);
-    this.router.navigate(['/list'])
+    this.router.navigate(['/list']);
   }
 }

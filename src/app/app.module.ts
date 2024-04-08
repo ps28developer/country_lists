@@ -8,20 +8,28 @@ import { CountrylistComponent } from './Components/countrylist/countrylist.compo
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MainpageComponent } from './Components/mainpage/mainpage.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { UnauthorizedComponent } from './Components/unauthorized/unauthorized.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountrydetailComponent,
     CountrylistComponent,
-    MainpageComponent
+    MainpageComponent,
+    UnauthorizedComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

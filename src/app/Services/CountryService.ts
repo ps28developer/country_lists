@@ -31,12 +31,12 @@ export class CountryService {
   }
 
   get role(){
-    return this.userRole.asObservable()
+    return this.userRole.asObservable();
   }
 
   detailCountry(name: string) {
     let flag = name.toLowerCase();
-    return this.http.get(this.baseUrl + 'alpha/' + flag);
+    return this.http.get(this.baseUrl + 'alpha/' + 'lr');
   }
 
 }

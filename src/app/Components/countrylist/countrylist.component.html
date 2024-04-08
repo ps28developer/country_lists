@@ -1,6 +1,6 @@
 <div class="main_div">
-    <div class="table_class">
-        <table class="table table-striped table-fixed">
+    <div class="table_class" *ngIf="dataSource">
+        <!-- <table class="table table-striped table-fixed">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -30,6 +30,65 @@
                     </td>
                 </tr>
             </tbody>
+        </table> -->
+
+        <table class="table" mat-table [dataSource]="dataSource">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef> # </th>
+                <td mat-cell *matCellDef="let element;let i=index"> {{i+1}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="flag">
+                <th mat-header-cell *matHeaderCellDef> Flag </th>
+                <td mat-cell *matCellDef="let element"> <img [src]="imgFun(element)" alt="flag"> </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="capital">
+                <th mat-header-cell *matHeaderCellDef> Capital </th>
+                <td mat-cell *matCellDef="let element"> {{element.capital[0]}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="region">
+                <th mat-header-cell *matHeaderCellDef> Region </th>
+                <td mat-cell *matCellDef="let element"> {{element.region}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="population">
+                <th mat-header-cell *matHeaderCellDef> Population </th>
+                <td mat-cell *matCellDef="let element"> {{element.population}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="currency">
+                <th mat-header-cell *matHeaderCellDef> Currency </th>
+                <td mat-cell *matCellDef="let element"> {{currencyArr(element)}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="action">
+                <th mat-header-cell *matHeaderCellDef> Action </th>
+                <td class="button_cls" mat-cell *matCellDef="let element">
+                    <button class="btn btn-success" [routerLink]="['/detail/',element['flag']]"> Detail</button>
+                    <button class="btn btn-primary" (click)="checkValid(element)" >
+                        Edit</button>
+                    <button class="btn btn-danger"  (click)="checkValid(element)">
+                        Delete</button>
+                </td>
+            </ng-container>
+
+            <!-- Name Column -->
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
+
+        <mat-paginator [pageSizeOptions]="[10, 20,50]" (page)="changePage($event)" showFirstLastButtons
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
     </div>
 </div>

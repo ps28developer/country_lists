@@ -1,63 +1,67 @@
 <div class="main_div" *ngIf="countryInfo">
-<h3 class="text-center">Detail Page</h3>
-    <div class="table_class">
-        <table class="table table-striped">
-            <tbody>
-                <tr>
-                    <td >Country</td>
-                    <td>{{countryInfo.name.common}}</td>
-                </tr>
-                <tr>
-                    <td >Official Name</td>
-                    <td>{{countryInfo.name.official}}</td>
-                </tr>
-                <tr>
-                    <td>Independent</td>
-                    <td>{{countryInfo.independent}}</td>
-                </tr>
-                <tr>
-                    <td>Status</td>
-                    <td>{{countryInfo.status}}</td>
-                </tr>
-                <tr>
-                    <td>UN-Member</td>
-                    <td>{{countryInfo.unMember}}</td>
-                </tr>
-                <ng-container *ngFor="let item of Object.keys(countryInfo.currencies)">
+        <h2 class="text-center">Detail Page</h2>
+        <div class="table_class">
+            <table class="table table-striped">
+                <tbody>
                     <tr>
-                        <td>Currencies</td>
-                        <td>{{countryInfo.currencies[item].name}}</td>
+                        <th>Country</th>
+                        <th>Info</th>
                     </tr>
-                    <tr >
-                        <td>Symbol</td>
-                        <td>{{countryInfo.currencies[item].symbol}}</td>
+                    <tr>
+                        <td>Country</td>
+                        <td>{{countryInfo.name.common}}</td>
                     </tr>
-                </ng-container>
-                <tr >
-                    <td>Capital</td>
-                    <td>{{countryInfo.capital}}</td>
-                </tr>
-                <tr >
-                    <td>Region</td>
-                    <td>{{countryInfo.region}}</td>
-                </tr>
-                <tr>
-                    <td>Language</td>
-                    <td>{{allLang}}</td>
-                </tr>
-                <tr>
-                    <td>Area</td>
-                    <td>{{countryInfo.area}}</td>
-                </tr>
-                <tr>
-                    <td>Flag</td>
-                    <td><img [src]="countryInfo.flags.png" alt="flags"/></td>
-                </tr>
-                <tr>
-                    <td>Population</td>
-                    <td>{{countryInfo.population}}</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+                    <tr>
+                        <td>Official Name</td>
+                        <td>{{countryInfo.name.official}}</td>
+                    </tr>
+                    <tr>
+                        <td>Independent</td>
+                        <td>{{countryInfo.independent}}</td>
+                    </tr>
+                    <tr>
+                        <td>Status</td>
+                        <td>{{countryInfo.status}}</td>
+                    </tr>
+                    <tr>
+                        <td>UN-Member</td>
+                        <td>{{countryInfo.unMember}}</td>
+                    </tr>
+                    <ng-container *ngFor="let item of Object.keys(countryInfo.currencies)">
+                        <tr>
+                            <td>Currencies</td>
+                            <td>{{countryInfo.currencies[item].name}}</td>
+                        </tr>
+                        <tr>
+                            <td>Symbol</td>
+                            <td>{{countryInfo.currencies[item].symbol}}</td>
+                        </tr>
+                    </ng-container>
+                    <tr>
+                        <td>Capital</td>
+                        <td>{{countryInfo.capital}}</td>
+                    </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td>{{countryInfo.region}}</td>
+                    </tr>
+                    <tr>
+                        <td>Language</td>
+                        <td>{{allLang}}</td>
+                    </tr>
+                    <tr>
+                        <td>Area</td>
+                        <td>{{countryInfo.area}}</td>
+                    </tr>
+                    <tr>
+                        <td>Flag</td>
+                        <td><img [src]="countryInfo.flags.png" alt="flags" /></td>
+                    </tr>
+                    <tr>
+                        <td>Population</td>
+                        <td>{{countryInfo.population}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 </div>

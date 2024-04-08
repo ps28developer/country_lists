@@ -8,5 +8,10 @@ export const authGuard: CanActivateFn = async (route, state) => {
   const countryService = inject(CountryService);
   // let role = localStorage.getItem("user_role");
   let role = await firstValueFrom(countryService.userRole);
-  return role == 'admin' ? true :false
+  if (role) {
+    return true;
+  } else {
+    router.navigate(['/main']);
+    return false;
+  }
 };
