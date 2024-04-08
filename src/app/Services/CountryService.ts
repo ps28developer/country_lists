@@ -10,7 +10,7 @@ export interface list {
   providedIn: 'root',
 })
 export class CountryService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   baseUrl = 'https://restcountries.com/v3.1/';
   userRole: BehaviorSubject<string> = new BehaviorSubject('');
@@ -30,13 +30,13 @@ export class CountryService {
     });
   }
 
-  get role(){
-    return this.userRole.asObservable();
+  get role() {
+    return this.userRole.value;
   }
 
   detailCountry(name: string) {
     let flag = name.toLowerCase();
-    return this.http.get(this.baseUrl + 'alpha/' + 'lr');
+    return this.http.get(this.baseUrl + 'alpha/' + flag);
   }
 
 }

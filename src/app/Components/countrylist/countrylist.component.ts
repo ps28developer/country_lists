@@ -13,12 +13,17 @@ interface list {
   templateUrl: './countrylist.component.html',
   styleUrls: ['./countrylist.component.scss'],
 })
-export class CountrylistComponent implements OnInit,AfterViewInit {
+export class CountrylistComponent implements OnInit, AfterViewInit {
   constructor(
     public countryService: CountryService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) {
+
+    if (this.countryService.role === 'admin') {
+      this.displayedColumns.push('action')
+    }
+  }
 
   countryList: list[] = [];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -29,8 +34,7 @@ export class CountrylistComponent implements OnInit,AfterViewInit {
     'capital',
     'region',
     'population',
-    'currency',
-    'action',
+    'currency'
   ];
 
   ngOnInit(): void {
@@ -43,35 +47,31 @@ export class CountrylistComponent implements OnInit,AfterViewInit {
     this.dataSource.paginator = this.paginator;
   }
 
+  getCountryCodeFromFlagEmoji(emoji: string) {
+    // Convert the flag emoji to Unicode code points
+    const codePoints = [...emoji].map(char => char.codePointAt(0)! - 127397);
 
+    // Convert Unicode code points back to country code
+    const countryCode = codePoints.map(code => String.fromCharCode(code)).join('');
 
-  imgFun(list: any) {
-    let flag = list.flag.toLowerCase();
+    return countryCode.toLowerCase(); // Ensure the country code is returned in lowercase
+  }
+
+  getFlag(emoji: string) {
+    const flag = this.getCountryCodeFromFlagEmoji(emoji);
     return 'https://flagcdn.com/' + flag + '.svg';
   }
 
-  changePage(obj:any){
+  changePage(obj: any) {
     this.paginator.pageIndex = obj.pageIndex;
     this.paginator.pageSize = obj.pageSize;
   }
 
-  checkValid(element:any){
-    this.countryService.userRole.subscribe(res=>{
-      if(res == 'admin'){
-        this.router.navigate(["detail",element.flag])
-      } else {this.router.navigate(["/unAuth"])};
-    })
-  }
-
-  currencyArr(list: any) {
-    let result: any = [];
-    return Object.keys(list.currencies).map(
-      (res: any, index: number): void | any => {
-        result.push(list.currencies[res].name);
-        if (Object.keys(list.currencies).length - 1 == index) {
-          return result.join(',');
-        }
-      }
-    );
+  getCurrencyString(currency: any) {
+    const result = []
+    for (const key in currency) {
+      result.push(currency[key].name)
+    }
+    return result.join(", ")
   }
 }

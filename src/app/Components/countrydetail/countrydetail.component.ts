@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CountryService, list } from 'src/app/Services/CountryService';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-countrydetail',
@@ -10,10 +10,10 @@ import {MatTableDataSource} from '@angular/material/table';
   styleUrls: ['./countrydetail.component.scss'],
 })
 export class CountrydetailComponent implements OnInit, AfterViewInit {
-  countryInfo:any;
-  Object=Object;
-  allLang:any=[];
-  displayedColumns: string[] = ['common', 'official', 'independent', 'status','unMember','capital','region','language','area','flag','population'];
+  countryInfo: any;
+  Object = Object;
+  allLang: any = [];
+  displayedColumns: string[] = ['common', 'official', 'independent', 'status', 'unMember', 'capital', 'region', 'language', 'area', 'flag', 'population'];
   dataSource = new MatTableDataSource<list>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   constructor(
@@ -23,7 +23,7 @@ export class CountrydetailComponent implements OnInit, AfterViewInit {
     route.params.subscribe((res: any) => res.id && this.countryDetail(res.id));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -32,14 +32,14 @@ export class CountrydetailComponent implements OnInit, AfterViewInit {
   countryDetail(name: string) {
     let result = name.toLowerCase()
     this.countryService.detailCountry(result).subscribe((res: any) => {
-      this.countryInfo=res[0]
+      this.countryInfo = res[0]
       this.dataSource = res
       this.getAllLang();
     });
   }
 
-  getAllLang(){
-    Object.keys(this.countryInfo.languages).forEach((res,index)=>{
+  getAllLang() {
+    Object.keys(this.countryInfo.languages).forEach((res, index) => {
       this.allLang.push(this.countryInfo.languages[res]);
       if (Object.keys(this.countryInfo.currencies).length - 1 == index) {
         return this.allLang.join(',');

@@ -8,10 +8,10 @@ import { CountryService } from 'src/app/Services/CountryService';
   styleUrls: ['./mainpage.component.scss'],
 })
 export class MainpageComponent implements OnInit {
-  constructor(private coutryService: CountryService,private router:Router) {}
+  constructor(private coutryService: CountryService, private router: Router) { }
 
-  ngOnInit(): void {}
-  
+  ngOnInit(): void { }
+
 
   changeRole(e: any) {
     let value = e.target.value;
