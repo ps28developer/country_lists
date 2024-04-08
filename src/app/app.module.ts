@@ -7,12 +7,14 @@ import { CountrydetailComponent } from './Components/countrydetail/countrydetail
 import { CountrylistComponent } from './Components/countrylist/countrylist.component';
 import {HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MainpageComponent } from './Components/mainpage/mainpage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CountrydetailComponent,
-    CountrylistComponent
+    CountrylistComponent,
+    MainpageComponent
   ],
   imports: [
     BrowserModule,

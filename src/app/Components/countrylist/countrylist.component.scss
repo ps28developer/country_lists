@@ -1,0 +1,29 @@
+.main_div {
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   .table_class {
+      margin: auto;
+      width: 90%;
+      height: 90vh;
+      text-align: center;
+      overflow-y: scroll;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      thead th {
+         position: sticky;
+         top: 0;
+         z-index: 99;
+      }
+      img {
+         height: 35px;
+         width: 35px;
+         object-fit: cover;
+      }
+      .button_cls{
+         display: flex;
+         gap:5px;
+      }
+   }
+
+}

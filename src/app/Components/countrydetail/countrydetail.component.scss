@@ -1,0 +1,21 @@
+.main_div {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .table_class {
+        width: 60%;
+        height: auto;
+        max-height: 90vh;
+        margin: auto;
+        text-align: center;
+        overflow-y: scroll;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        img {
+            height: 35px;
+            width: 35px;
+            object-fit: cover;
+         }
+    }
+}
